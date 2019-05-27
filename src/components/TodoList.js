@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 class TodoList extends Component {
     render() {
         return (
-            <div>
-             Hello from Todo List
+            <div className="lead">
+              Hello from Todo List
             </div>
         )
     }
