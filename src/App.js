@@ -6,12 +6,7 @@ import TodoList from './components/TodoList';
 
 class App extends Component  {
   state = {
-    todos: [
-      {id: 1, title: "Wake up"},
-      {id: 2, title: "Feed the dog"},
-      {id: 3, title: "Smack the donkey"},
-      {id: 4, title: "Bash some DMC 5"}
-    ],
+    todos: [],
     id: uuid(),
     todo: '',
     editItem: false
@@ -32,24 +27,35 @@ class App extends Component  {
       todo: '',
       id: uuid(),
       editItem: false
-    })
+    }, () => console.log(this.state))   
   }
 
   handleDelete = (id) => {
-    console.log(`handle delete ${id}`)
+    const filteredTodos = this.state.todos.filter(todo => todo.id !== id);
+    this.setState({
+      todos: filteredTodos
+    })
   }
 
   handleEdit = (id) => {
-    console.log(`handle edit ${id}`)
+    const filteredTodos = this.state.todos.filter(todo => todo.id !== id);
+    const selectedTodo = this.state.todos.find(todo => todo.id === id);
+    this.setState({
+      todos: filteredTodos,
+      todo: selectedTodo.title,
+      id: id,
+      editItem: true
+    })
   }
 
   clearList = () => {
-    console.log('clear todo')
+    this.setState({
+      todos: []
+    })
   }
   
 
   render(){
-    console.log(this.state)
     return (
       <div className="container">
         <div className="row">

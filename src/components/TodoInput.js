@@ -21,9 +21,14 @@ class TodoInput extends Component {
                         />
                         <button 
                             type="submit" 
-                            className="btn btn-outline-success text-uppercase btn-block mt-3"
+                            disabled={todo ? false : true}
+                            className = {
+                                editItem 
+                                ? "btn btn-warning btn-block mt-3" 
+                                : "btn btn-success text-uppercase btn-block mt-3"
+                            }
                         >
-                            add todo
+                            {editItem ? 'Edit item' : 'add todo'}
                         </button>
                     </div>
                 </form>
